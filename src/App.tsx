@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import './App.css';
 import { Menu } from './menuData';
-import EmptyOrder from './components/EmptyOrder/EmptyOrder';
 import ItemButton from './components/ItemButton/ItemButton';
-import OrderItem from './components/OrderItem/OrderItem';
-import TotalPrice from './components/TotalPrice/TotalPrice';
+import OrderItemComponent from './components/OrderItem/OrderItem';
+import MenuWrap from './components/MenuWrap/MenuWrap';
+import { OrderItem } from './types';
+import OrderWrap from './components/OrderWrap/OrderWrap';
 
 function App() {
-  const [currentOrder, setCurrentOrder] = useState([
+  const [currentOrder, setCurrentOrder] = useState<OrderItem[]>([
     {
       id: 1,
       name: 'Hamburger',
@@ -72,7 +73,7 @@ function App() {
     .filter((order) => order.count > 0)
     .map((order) => {
       return (
-        <OrderItem
+        <OrderItemComponent
           order={order}
           removeFromOrder={removeFromOrder}
           key={order.id}
@@ -84,26 +85,14 @@ function App() {
     return acc + item.price * currentOrder[index].count;
   }, 0);
 
-  const order = (
-    <>
-      {orderItems}
-      <TotalPrice totalPrice={totalPrice} />
-    </>
-  );
   return (
     <div className='container d-flex mt-5 gap-3 flex-column flex-md-row align-items-start'>
-      <div className='menuWrap d-flex flex-wrap justify-content-between align-items-center gap-2'>
-        <span className='border-text orange'>Add items</span>
-        {menuItems}
-      </div>
-      <div className='orderWrap d-flex flex-column align-items-center gap-2'>
-        <span className='border-text black'>Order details</span>
-        {currentOrder.filter((order) => order.count > 0).length > 0 ? (
-          order
-        ) : (
-          <EmptyOrder />
-        )}
-      </div>
+      <MenuWrap menuItems={menuItems} />
+      <OrderWrap
+        currentOrder={currentOrder}
+        orderItems={orderItems}
+        totalPrice={totalPrice}
+      />
     </div>
   );
 }

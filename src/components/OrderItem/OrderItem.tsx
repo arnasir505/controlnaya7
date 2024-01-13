@@ -1,13 +1,10 @@
 import React from 'react';
 import { Menu } from '../../menuData';
 import './OrderItem.css';
+import { OrderItem } from '../../types';
 
 interface OrderItemProps {
-  order: {
-    id: number;
-    name: string;
-    count: number;
-  };
+  order: OrderItem;
   removeFromOrder: (id: number) => void;
 }
 

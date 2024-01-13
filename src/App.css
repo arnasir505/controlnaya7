@@ -2,15 +2,6 @@
   max-width: 900px;
 }
 
-.menuWrap {
-  padding: 16px;
-  border: 2px solid orange;
-  border-radius: 10px;
-  position: relative;
-  max-width: 500px;
-  flex: 2 1 auto;
-}
-
 .orderWrap {
   padding: 16px;
   border: 2px solid black;

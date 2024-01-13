@@ -3,4 +3,10 @@ export type MenuItem = {
   name: string;
   price: number;
   img: string;
-}
+};
+
+export type OrderItem = {
+  id: number;
+  name: string;
+  count: number;
+};
