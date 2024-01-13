@@ -3,6 +3,9 @@ import './App.css';
 import { Menu } from './menuData';
 import './components/ItemButton/ItemButton.css';
 import EmptyOrder from './components/EmptyOrder/EmptyOrder';
+import ItemButton from './components/ItemButton/ItemButton';
+import OrderItem from './components/OrderItem/OrderItem';
+import TotalPrice from './components/TotalPrice/TotalPrice';
 
 function App() {
   const [currentOrder, setCurrentOrder] = useState([
@@ -63,39 +66,18 @@ function App() {
   };
 
   const menuItems = Menu.map((item) => {
-    return (
-      <button
-        className='btn menuBtn d-flex gap-2'
-        key={item.id}
-        onClick={() => addToOrder(item.id)}
-      >
-        <img src={item.img} alt={item.name} className='menuBtn_img' />
-        <div className='btn-text d-flex flex-column align-items-baseline'>
-          <span className='h4'>{item.name}</span>
-          <span>Price: {item.price} KGS</span>
-        </div>
-      </button>
-    );
+    return <ItemButton item={item} addToOrder={addToOrder} key={item.id} />;
   });
 
   const orderItems = currentOrder
     .filter((order) => order.count > 0)
     .map((order) => {
       return (
-        <div
+        <OrderItem
+          order={order}
+          removeFromOrder={removeFromOrder}
           key={order.id}
-          className='fw-bold w-100 d-flex justify-content-end'
-        >
-          <span className='order_name me-auto'>{order.name}</span>
-          <span className='order_count me-1'>x{order.count}</span>
-          <span className='order_price'>
-            {Menu.filter((item) => item.id === order.id)[0].price * order.count}{' '}
-            KGS
-          </span>
-          <button className='btn' onClick={() => removeFromOrder(order.id)}>
-            X
-          </button>
-        </div>
+        />
       );
     });
 
@@ -106,9 +88,7 @@ function App() {
   const order = (
     <>
       {orderItems}
-      <span className='text-end w-100 fw-bold text-decoration-underline'>
-        Total: {totalPrice} KGS
-      </span>
+      <TotalPrice totalPrice={totalPrice} />
     </>
   );
   return (
