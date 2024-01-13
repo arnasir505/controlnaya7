@@ -1,6 +1,6 @@
 const EmptyOrder = () => {
   return (
-    <div className='text-danger fw-bold fs-5'>
+    <div className='text-danger fw-bold'>
       <span>Order is empty!</span>
       <br />
       <span>Please add items.</span>

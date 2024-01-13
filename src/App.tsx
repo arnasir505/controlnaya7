@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import { Menu } from './menuData';
-import './components/ItemButton/ItemButton.css';
 import EmptyOrder from './components/EmptyOrder/EmptyOrder';
 import ItemButton from './components/ItemButton/ItemButton';
 import OrderItem from './components/OrderItem/OrderItem';
@@ -92,11 +91,13 @@ function App() {
     </>
   );
   return (
-    <div className='container d-flex mt-5'>
-      <div className='menuWrap d-flex w-50 flex-wrap justify-content-between gap-2'>
+    <div className='container d-flex mt-5 gap-3 flex-column flex-md-row align-items-start'>
+      <div className='menuWrap d-flex flex-wrap justify-content-between align-items-center gap-2'>
+        <span className='border-text orange'>Add items</span>
         {menuItems}
       </div>
-      <div className='orderWrap w-25 d-flex flex-column align-items-center gap-2'>
+      <div className='orderWrap d-flex flex-column align-items-center gap-2'>
+        <span className='border-text black'>Order details</span>
         {currentOrder.filter((order) => order.count > 0).length > 0 ? (
           order
         ) : (

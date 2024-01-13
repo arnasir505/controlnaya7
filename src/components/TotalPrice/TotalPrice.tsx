@@ -1,15 +1,16 @@
-import React from 'react'
+import React from 'react';
+import './TotalPrice.css';
 
 interface TotalPriceProps {
-  totalPrice: number
+  totalPrice: number;
 }
 
-const TotalPrice: React.FC<TotalPriceProps> = ({totalPrice}) => {
+const TotalPrice: React.FC<TotalPriceProps> = ({ totalPrice }) => {
   return (
-    <span className='text-end w-100 fw-bold text-decoration-underline'>
+    <span className='text-end w-100 fw-bold totalPrice'>
       Total: {totalPrice} KGS
     </span>
   );
-}
+};
 
-export default TotalPrice
+export default TotalPrice;

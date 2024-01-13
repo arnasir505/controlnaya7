@@ -1,12 +1,13 @@
 import React from 'react';
 import { MenuItem } from '../../types';
+import './ItemButton.css';
 
 interface ItemButtonProps {
   item: MenuItem;
   addToOrder: (id: number) => void;
 }
 
-const ItemButton: React.FC<ItemButtonProps> = ({item, addToOrder}) => {
+const ItemButton: React.FC<ItemButtonProps> = ({ item, addToOrder }) => {
   return (
     <button
       className='btn menuBtn d-flex gap-2'

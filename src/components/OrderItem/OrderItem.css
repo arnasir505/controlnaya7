@@ -1,0 +1,6 @@
+.btn-delete {
+  width: 25px;
+  height: 25px;
+  background: url('../../assets/ic-delete.png') no-repeat center;
+  background-size: contain;
+}

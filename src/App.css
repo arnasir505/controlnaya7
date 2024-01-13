@@ -1,3 +1,38 @@
 .container {
   max-width: 900px;
 }
+
+.menuWrap {
+  padding: 16px;
+  border: 2px solid orange;
+  border-radius: 10px;
+  position: relative;
+  max-width: 500px;
+  flex: 2 1 auto;
+}
+
+.orderWrap {
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 270px;
+}
+
+.border-text {
+  position: absolute;
+  left: 16px;
+  top: -15px;
+  background: white;
+  padding: 0 4px;
+  font-weight: bold;
+}
+
+.border-text.orange {
+  color: orange;
+}
+
+.border-text.black {
+  color: black;
+}

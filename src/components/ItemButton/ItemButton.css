@@ -1,8 +1,23 @@
 .menuBtn {
   width: 49%;
+  border-radius: 10px;
+}
+
+.menuBtn:hover {
+  border: 1px solid red;
+}
+
+.menuBtn:active {
+  border: 1px solid orange !important;
 }
 
 .menuBtn_img {
-  max-width: 60px;
-  height: auto;
+  width: 60px;
+  height: 60px;
+}
+
+@media screen and (max-width: 500px) {
+  .menuBtn {
+    width: 100%;
+  }
 }
