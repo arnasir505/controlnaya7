@@ -50,6 +50,18 @@ function App() {
     });
   };
 
+  const removeFromOrder = (id: number) => {
+    setCurrentOrder((prevState) => {
+      return prevState.map((order) => {
+        if (order.id === id) {
+          return { ...order, count: 0 };
+        } else {
+          return order;
+        }
+      });
+    });
+  };
+
   const menuItems = Menu.map((item) => {
     return (
       <button
@@ -80,6 +92,9 @@ function App() {
             {Menu.filter((item) => item.id === order.id)[0].price * order.count}{' '}
             KGS
           </span>
+          <button className='btn' onClick={() => removeFromOrder(order.id)}>
+            X
+          </button>
         </div>
       );
     });
@@ -87,7 +102,7 @@ function App() {
   const totalPrice = Menu.reduce((acc, item, index) => {
     return acc + item.price * currentOrder[index].count;
   }, 0);
-  
+
   const order = (
     <>
       {orderItems}
